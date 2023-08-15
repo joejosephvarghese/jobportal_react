@@ -10,6 +10,7 @@ import { googleAuthServiceInterface } from "../../../app/services/googleAuthServ
 
 const userAuthRouter = () => {
   const route = express.Router();
+  console.log(userAuthRouter,"userAuthRouter");
 
   const controller = authController(
     authServiceInterface,
@@ -20,7 +21,8 @@ const userAuthRouter = () => {
     googleAuthServiceInterface,
     googleAuthService,
   );
-
+  console.log(controller,"controller");
+  
   route.post("/register", controller.userRegister);
   route.post("/login", controller.loginUser);
   route.post("/sign-in-with-google", controller.signWithGoogle);

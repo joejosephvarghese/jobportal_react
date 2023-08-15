@@ -27,3 +27,4 @@ const userRouter = ()=> {
 
     return route;
 }
+export default userRouter;  

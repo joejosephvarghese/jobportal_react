@@ -22,10 +22,13 @@ const authController = (
   const dbRepositoryUser = userDbRepository(userDbRepositoryImpl(userModel));
   const authService = authServiceInterface(authServiceImpl());
   const googleAuthService = googleAuthServiceInterface(googleAuthServiceImpl());
-
+console.log(dbRepositoryUser,"op");
   const userRegister = expressAsyncHandler(
     async (req: Request, res: Response) => {
       const user: CreateUserInterface = req?.body;
+      
+     console.log(user,"got userdata");
+
       await registerUser(user, dbRepositoryUser, authService);
       res.json({
         status: "success",
