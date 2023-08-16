@@ -40,6 +40,7 @@ export const userLogin = async (
     password,
     user.password ?? ""
   );
+  console.log(isPasswordCorrect,"return password");
   if (!isPasswordCorrect) {
     throw new AppError("Sorry, incorrect password", HttpStatus.UNAUTHORIZED);
   }

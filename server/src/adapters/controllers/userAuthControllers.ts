@@ -39,12 +39,14 @@ console.log(dbRepositoryUser,"op");
 
   const loginUser = expressAsyncHandler(async (req: Request, res: Response) => {
     const { email, password }: { email: string; password: string } = req.body;
+    console.log(email,password);
     const token = await userLogin(
       email,
       password,
       dbRepositoryUser,
       authService
     );
+    console.log(token,"got token");
     res.json({
       status: "success",
       message: "user verified",

@@ -10,6 +10,7 @@ export const authService = () => {
   };
 
   const comparePassword = (password: string, hashedPassword: string) => {
+    console.log(password,hashedPassword,"compare");
     return bcrypt.compare(password, hashedPassword);
   };
 
