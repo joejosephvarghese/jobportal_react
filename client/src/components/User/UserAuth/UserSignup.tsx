@@ -121,7 +121,7 @@ export default function UserSignup() {
             </div>
             <button
               type="submit"
-              className="w-full px-3 py-2 text-sm bg-purple-600 text-white rounded hover:bg-purple-700 flex justify-center items-center"
+              className="w-full px-3 py-2 text-sm bg-red-600 text-white rounded hover:bg-green-700 flex justify-center items-center"
             >
               Sign up
             </button>
