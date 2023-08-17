@@ -1,34 +1,62 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
-import { Link } from 'react-router-dom';
-import { useForm, SubmitHandler } from 'react-hook-form';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'; // Import CSS for toastify
-
-type FormData = {
-  email: string;
-  password: string;
-};
+import { useEffect } from "react";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import { LoginPayload } from "../../../types/PayloadInterface";
+import { userLoginValidationSchema } from "../../../utils/validation";
+import { userLogin } from "../../../features/axios/api/user/userAuthentication";
+import { Link, useNavigate } from "react-router-dom";
+import { setToken } from "../../../features/redux/slice/user/TokenSlice";
+import { useSelector, useDispatch } from "react-redux/es/exports";
+import { RootState } from "../../../features/redux/reducers/Reducer";
+import { loginSuccess } from "../../../features/redux/slice/user/userLoginAuthSlice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import GoogleAuthComponent from "./GoogleAuthComponet";
 
 export default function UserLogin() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const isLoggedIn = useSelector((state:RootState) => state.userAuth.isLoggedIn);
+  const token = localStorage.getItem('token');
 
-  const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginPayload>({
+    resolver: yupResolver(userLoginValidationSchema),
+  });
 
-  const handleUsernameChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setUsername(event.target.value);
+  const notify = (msg: string, type: string) =>
+    type === "error"
+      ? toast.error(msg, { position: toast.POSITION.TOP_RIGHT })
+      : toast.success(msg, { position: toast.POSITION.TOP_RIGHT });
+
+  useEffect(()=>{
+    if(token) {
+      dispatch(loginSuccess());
+    }
+    if(isLoggedIn === true) {
+      navigate('/user/home');
+    }
+  },[navigate]);
+
+  const submitHandler = async (formData: LoginPayload) => {
+    userLogin(formData)
+      .then((response) => {
+        const token = response.token;
+        dispatch(setToken(token));
+        dispatch(loginSuccess());
+
+        notify("Login success", "success");
+        setTimeout(() => {
+          navigate('/user/home');
+        }, 2000);
+      })
+      .catch((error: any) => {
+        notify(error.message, "error");
+      });
   };
-
-  const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.target.value);
-  };
-
-  const submitHandler: SubmitHandler<FormData> = (data) => {
-    // Here you can add your login logic.
-    console.log('Username:', data.email);
-    console.log('Password:', data.password);
-  };
-
   return (
     <div className="flex justify-end h-screen bg-slate-100">
       <div className="ml-32 flex justify-center items-center">
@@ -48,7 +76,7 @@ export default function UserLogin() {
               </label>
               <input
                 id="email"
-                type="text"
+                type="text  "
                 placeholder="Email"
                 {...register("email")}
                 className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-purple-500"
@@ -58,12 +86,11 @@ export default function UserLogin() {
               )}
             </div>
             <div>
-              <label className="text-sm" htmlFor="password">
+              <label className="text-sm" htmlFor="email">
                 Password
               </label>
               <input
                 type="password"
-                id="password"
                 placeholder="Password"
                 {...register("password")}
                 className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-purple-500"
@@ -81,10 +108,22 @@ export default function UserLogin() {
               Login
             </button>
           </form>
-          {/* ... */}
+          <span className="mr-2 flex justify-center">or</span>
+          <div className="flex items-center justify-center mt-2">
+            <GoogleAuthComponent/>
+          </div>
+
+          <div className="mt-4 text-center">
+            <Link to={"/user/register"}>
+              <span className="text-gray-500">
+                Don't have an account?{" "}
+                <p className="text-purple-600 underline">Sign up</p>
+              </span>
+            </Link>
+          </div>
         </div>
       </div>
-      <ToastContainer />
+      <ToastContainer />    
     </div>
   );
 }
