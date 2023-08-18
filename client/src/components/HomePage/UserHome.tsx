@@ -21,7 +21,7 @@ function UserHome() {
   return (
     <div className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
       <img
-        src="https://img.freepik.com/free-photo/business-people-casual-meeting_53876-101882.jpg?w=1380&t=st=1692256607~exp=1692257207~hmac=7ac744bdaf5654f7bd9bd98231861375e06b0554050989c691f93bd2645d146a"
+        src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80"
         alt=""
         className="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center"
       />
@@ -51,9 +51,15 @@ function UserHome() {
       </div>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0 lg:h-96">
-          <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
-            Find the job that is perfect for You
-          </h2>
+        <h2 className="text-6xl font-serif font-semibold text-teal-600 text-center py-10">
+  Carve Your Own Career Path
+</h2>
+
+
+
+
+
+
           <p className="mt-6 text-lg leading-8 text-gray-300">
            
           </p>
@@ -61,7 +67,7 @@ function UserHome() {
         <div className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
           <div className="grid grid-cols-1 gap-x-8 gap-y-6 text-base font-semibold leading-7 text-white sm:grid-cols-2 md:flex lg:gap-x-10">
             {links.map((link) => (
-              <a key={link.name} href={link.href}>
+              <a key={link.name} href={link.href}className="transition-transform duration-300 transform hover:-translate-y-4">
                 {link.name} <span aria-hidden="true">&rarr;</span>
               </a>
             ))}

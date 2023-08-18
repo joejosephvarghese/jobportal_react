@@ -1,16 +1,15 @@
 import userAuthRouter from "./userAuth";
-// import employerAuthRouter from "./employerAuth";
-// import jobRouter from "./jobs";
+import employerAuthRouter from "./employerAuth";
 import { Application } from "express";
 import userRouter from "./user";
-import authenticationMiddleware from "../middleware/authenticationMiddleware";
+
 
 
 const routes = (app: Application) => {
     app.use('/api/user', userRouter());
  
     app.use('/api/user-auth', userAuthRouter());
-   
+    app.use('/api/employer-auth', employerAuthRouter());
 
 console.log(routes,"got routes");
 }

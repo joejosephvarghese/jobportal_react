@@ -3,6 +3,7 @@ import { Fragment } from "react";
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
+import { Button } from "@material-tailwind/react";
 
 const navigation = [
   { name: "Employer Login", href: "employer/login", current: false },
@@ -36,13 +37,13 @@ function CommonHeader() {
                 <div className="flex flex-shrink-0 items-center">
                   <img
                     className="block h-8 w-auto lg:hidden"
-                    src="https://res.cloudinary.com/dgjwhf8i3/image/upload/v1685793152/Screenshot_2023-06-03_172145_pfhklc.jpg"
+                    src=""
                     alt="Your Company"
                   />
                   <Link to={"/"}>
                     <img
                       className="hidden h-8 w-auto lg:block"
-                      src="https://res.cloudinary.com/dgjwhf8i3/image/upload/v1685793152/Screenshot_2023-06-03_172145_pfhklc.jpg"
+                      src=""
                       alt="Your Company"
                     />
                   </Link>
@@ -58,7 +59,7 @@ function CommonHeader() {
                       href={item.href}
                       className={classNames(
                         item.current
-                          ? "bg-purple-600 text-white"
+                          ? "bg-red-600 text-white"
                           : "text-black hover:bg-purple-500 hover:text-white",
                         "rounded-md px-3 py-2 text-sm font-medium"
                       )}

@@ -61,7 +61,7 @@ export default function UserLogin() {
     <div className="flex justify-end h-screen bg-slate-100">
       <div className="ml-32 flex justify-center items-center">
         <img
-          src="https://www.foundit.in/rio/public/images/login-illustration.png"
+          src="https://img.freepik.com/free-vector/man-having-online-job-interview_52683-43379.jpg?w=740&t=st=1692285789~exp=1692286389~hmac=21c315bc6b593f7155cec11285fa0a695a231a9eede6536b1d5d6a47c965b46e"
           alt="Img"
           className="w-80"
         />
