@@ -6,11 +6,11 @@ export const emailServiceInterface = (
     const sendOtpEmail = (email: string) => {
         service.sendEmail(email);
     }
-
     const verifyOTP = (OTP: string) => {
         const response = service.verifyOTP(OTP);
         return response;
     }
+    
 
     return {
         sendOtpEmail,

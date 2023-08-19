@@ -4,6 +4,7 @@ import { CreateUserInterface, UserInterface } from "../../types/userInterface";
 export const userDbRepository = (
   repository: ReturnType<UserRepositoryMongoDB>
 ) => {
+  console.log(repository,"awwwaaa");
   // getting user by email id
   const getUserByEmail = async (email: string) => {
     return await repository.getUserByEmail(email);

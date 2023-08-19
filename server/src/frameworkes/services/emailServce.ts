@@ -24,7 +24,7 @@ export const sendEmailService = () => {
 
     console.log(otpData);
     const mailOptions = {
-      from: "abhimodiyilclan@gmail.com",
+      from: "joejosephvarghese94@gmail.com",
       to: email,
       subject: "OTP for Login",
       text: `Your OTP for login is: ${otp}`,
@@ -37,7 +37,6 @@ export const sendEmailService = () => {
       }
     });
   };
-
   const verifyOTP = (OTP: string) => {
     if (OTP == otp) {
       return { message: "OTP verified" };
@@ -47,6 +46,8 @@ export const sendEmailService = () => {
       return { message: "OTP is invalid" };
     }
   };
+
+  
   return {
     sendEmail,
     verifyOTP,

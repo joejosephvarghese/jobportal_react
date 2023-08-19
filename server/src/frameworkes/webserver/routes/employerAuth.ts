@@ -22,7 +22,9 @@ const employerAuthRouter = () => {
   );
 
   route.post("/register", controller.employerRegister);
- 
+  route.post("/login", controller.loginEmployer);
+  route.get("/email-verify/:emailId", controller.emailVerification);
+  route.get("/email-OTP/:OTP", controller.OTPVerification);
 
   return route;
 };

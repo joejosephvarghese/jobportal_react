@@ -12,7 +12,7 @@ const configKeys = {
   APP_SECRET: process.env.APP_SECRET as string,
   PORT: process.env.PORT as string,
   ORIGIN_PORT: process.env.ORIGIN_PORT as string,
-  NODE_MAIL_USER: process.env.NODE_MAIL_USER_EMAIL as string,
-  NODE_MAIL_PASS: process.env.EMAIL_PASS as string,
+  NODE_MAIL_USER: "joejosephvarghese94@gmail.com",
+  NODE_MAIL_PASS: "sdvnhofjqixnqrei"
 };
 export default configKeys;
