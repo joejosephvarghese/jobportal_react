@@ -8,6 +8,15 @@ const apiConfig = {
     updateUser: `${configKeys.API_URL}user/update-user`,
     uploadResume: `${configKeys.API_URL}user/update-resume`,
     deleteResume: `${configKeys.API_URL}user/delete-resume`,
+
+
+
+    employerRegister: `${configKeys.API_URL}employer-auth/register`,
+    employerLogin: `${configKeys.API_URL}employer-auth/login`,
+    emailVerify: `${configKeys.API_URL}employer-auth/email-verify`,
+    OTPVerify: `${configKeys.API_URL}employer-auth/email-OTP`,
+    employerData: `${configKeys.API_URL}employer/employer-data`,
+    updateEmployer: `${configKeys.API_URL}employer/update-employer`,
 }
 
 export default apiConfig;
