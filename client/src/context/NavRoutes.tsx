@@ -1,0 +1,24 @@
+import { FaChartBar, FaBriefcase, FaEnvelope, FaFacebookMessenger, FaUser } from "react-icons/fa";
+
+const icon = {
+  className: "w-5 h-5 text-inherit",
+};
+
+export const NavRoutes = [
+  {
+    layout: "admin",
+    pages: [
+      {
+        icon: <FaChartBar {...icon} />,
+        name: "dashboard",
+        path: "/employer/dashboard",
+      },
+      {
+        icon: <FaBriefcase {...icon} />,
+        name: "Jobs",
+        path: "/employer/all-jobs",
+      },
+     
+    ],
+  },
+];

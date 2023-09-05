@@ -13,6 +13,7 @@ export const registerUser = async (payload: SignupPayload): Promise<any> => {
       data: payload,
     };
     const response = await axios(config);
+    console.log(response,"got response of user signup");
     return response.data;
   } catch (error: any) {
     if (error.message === "Request failed with status code 409") {

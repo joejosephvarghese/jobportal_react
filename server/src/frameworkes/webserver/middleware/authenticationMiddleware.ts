@@ -10,9 +10,11 @@ const authenticationMiddleware = (
   next: NextFunction
 ) => {
   const customReq = req as CustomRequest
+  console.log(customReq.headers.authorization,"employer req body");
   let token: string | null = "";
   if ( customReq.headers.authorization && customReq.headers.authorization.startsWith("Bearer")) {
     token = customReq.headers.authorization.split(" ")[1];
+    console.log(token,"token");
   }
   if (!token) {
     throw new AppError('Token not found', HttpStatus.UNAUTHORIZED);

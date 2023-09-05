@@ -21,6 +21,7 @@ const authController = (
 ) => {
   const dbRepositoryUser = userDbRepository(userDbRepositoryImpl(userModel));
   console.log(dbRepositoryUser,"oppppppppppppppppppppp");
+  console.log(userDbRepositoryImpl,"user db imp");
   const authService = authServiceInterface(authServiceImpl());
   const googleAuthService = googleAuthServiceInterface(googleAuthServiceImpl());
 
@@ -33,6 +34,7 @@ const authController = (
      console.log(user,"got userdata");
 
       await registerUser(user, dbRepositoryUser, authService);
+     
       res.json({
         status: "success",
         message: "user registered successfully",
@@ -59,6 +61,7 @@ const authController = (
 
   const signWithGoogle = expressAsyncHandler(async (req: Request, res: Response) => {
     const {credential} : {credential: string} = req.body;
+    console.log(credential,"credential");
     const token = await signInWithGoogle(credential, googleAuthService, dbRepositoryUser, authService);
     res.json({
       status: "success",

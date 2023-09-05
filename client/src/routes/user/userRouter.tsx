@@ -10,8 +10,7 @@ const UserRouter = () => {
         <Routes>
         <Route path="/home" element={<UserHomePage />} />
         <Route path="/register" element={<UserSignupPage />} />
-          <Route path="/login" element={<UserLoginPage />} />
-          
+        <Route path="/login" element={<UserLoginPage />} />
         </Routes>
       </div>
     );

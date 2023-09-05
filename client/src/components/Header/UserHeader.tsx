@@ -7,10 +7,8 @@ import { clearToken } from "../../features/redux/slice/user/TokenSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { RootState } from "../../features/redux/reducers/Reducer";
-import {
-  fetchUser,
-  clearUserDetails,
-} from "../../features/redux/slice/user/UserDetailsSlice";
+import { fetchUser,
+  clearUserDetails } from "../../features/redux/slice/user/UserDetailsSlice";
 
 const navigation = [{ name: "Jobs", href: "/job/all-jobs", current: false }];
 
@@ -81,7 +79,7 @@ function UserHeader() {
                           className={classNames(
                             item.current
                               ? "bg-white text-purple-700"
-                              : "text-white hover:bg-red-500 hover:text-white",
+                              : "text-black hover:bg-purple-500 hover:text-white",
                             "rounded-md px-3 py-2 text-sm font-medium"
                           )}
                           aria-current={item.current ? "page" : undefined}
@@ -96,16 +94,16 @@ function UserHeader() {
                   {/* Profile dropdown */}
 
                   <Menu as="div" className="relative ml-3">
-                  <div>
-    <Menu.Button className="flex items-center rounded-full bg-gradient-to-br from-blue-500 to-purple-600 text-white text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 transition duration-300 hover:scale-105">
-      <span className="sr-only">Open user menu</span>
-      <img
-        className="h-8 w-8 rounded-full border-2 border-white"
-        src={user?.image ?? '../user.jpg'}
-        alt="user"
-      />
-    </Menu.Button>
-  </div>
+                    <div>
+                      <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                        <span className="sr-only">Open user menu</span>
+                        <img
+                          className="h-8 w-8 rounded-full"
+                          src={user?.image ?? '../user.jpg'}
+                          alt="user"
+                        />
+                      </Menu.Button>
+                    </div>
                     <Transition
                       as={Fragment}
                       enter="transition ease-out duration-100"

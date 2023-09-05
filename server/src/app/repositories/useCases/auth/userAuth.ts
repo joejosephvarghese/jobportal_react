@@ -18,7 +18,9 @@ export const registerUser = async (
     throw new AppError("email already exists", HttpStatus.CONFLICT);
   }
   user.password = await authService.encryptPassword(user.password ?? "");
+  console.log(user,"reg user");
   const result = await userRepository.createUser(user);
+  console.log(result, "end");
   return result;
 };
 

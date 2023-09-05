@@ -15,7 +15,7 @@ export default function UserSignup() {
     handleSubmit,
     formState: { errors },
   } = useForm<SignupPayload>({
-    resolver: yupResolver(userRegisterValidationSchema),
+    resolver: yupResolver(userRegisterValidationSchema as any),
   });
   
 

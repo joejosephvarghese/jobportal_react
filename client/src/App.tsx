@@ -3,6 +3,7 @@ import UserRouter from "./routes/user/userRouter";
 import HomeRouter from "./routes/user/home/HomeRouter";
 import EmployerRouter from "./routes/employer/EmployerRouter";
 import "./App.css";
+import JobRouter from "./routes/jobs/JobRouter";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/*" element={<HomeRouter />} />
           <Route path="/user/*"  element={<UserRouter />} />
           <Route path="/employer/*" element={<EmployerRouter />} />
+          <Route path="/job/*" element={<JobRouter/>}/>
         </Routes>
       </Router>
     </div>
