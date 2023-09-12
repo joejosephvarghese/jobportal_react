@@ -18,7 +18,12 @@ export const NavRoutes = [
         name: "Jobs",
         path: "/employer/all-jobs",
       },
-     
+      {
+        icon: <FaEnvelope {...icon} />,
+        name: "Applications",
+        path: "/employer/applications",
+      },
+   
     ],
   },
 ];

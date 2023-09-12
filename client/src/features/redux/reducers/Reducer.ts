@@ -8,6 +8,8 @@ import employerJobsReducer from '../slice/employer/employerJobsSlice';
 import allJobReducer from '../slice/user/getAllJobsSlice';
 import jobDetailReducer from '../slice/user/jobDetailsSlice';
 import employerJobDetailReducer from '../slice/employer/employerJobDetailsSlice';
+import userAllApplicationReducer from '../slice/user/allApplicationSlice';
+import userApplicationDetailsReducer from '../slice/user/userApplicationDetailsSlice';
 const rootReducer = combineReducers({
     token: tokenReducer,
     userDetails: userDetailsReducer,
@@ -18,6 +20,8 @@ const rootReducer = combineReducers({
     allJobs: allJobReducer,
     employerJobDetails: employerJobDetailReducer,
     jobDetails: jobDetailReducer,
+    userApplications: userAllApplicationReducer,
+    applicationDetails: userApplicationDetailsReducer
   });
 
   export type RootState = ReturnType<typeof rootReducer>;

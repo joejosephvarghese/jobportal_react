@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import { NavRoutes } from "../../context/NavRoutes";
 import AllJobsEmployer from "../../components/Employer/Employer/AllJobsEmployer";
 import Dashboard from "../../components/Employer/Employer/Dashboard";
-
+import Applications from "../../components/Employer/Employer/Applications";
 import EmployerHeaderWithNav from "../../components/Header/EmployerHeaderWithNav";
 
 
@@ -22,7 +22,7 @@ function EmployerHomePage() {
         <Routes>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/all-jobs" element={<AllJobsEmployer />} />
-        
+          <Route path="/applications" element={<Applications />} />
        
           {/* Add more routes here */}
         </Routes>

@@ -5,6 +5,7 @@ import userRouter from "./user";
 import authenticationMiddleware from "../middleware/authenticationMiddleware";
 import employerRouter from "./employer";
 import jobRouter from "./jobs";
+import jobApplicationRouter from "./jobApplication";
 
 const routes = (app: Application) => {
     app.use('/api/user', userRouter());
@@ -13,8 +14,8 @@ const routes = (app: Application) => {
     app.use('/api/employer-auth', employerAuthRouter());
     app.use('/api/employer',employerRouter());
     app.use('/api/job', authenticationMiddleware, jobRouter());
-
-console.log(routes,"got routes");
+    app.use('/api/job-application',authenticationMiddleware, jobApplicationRouter());
+              console.log(routes,"got routes");
 }
 
 export default routes;

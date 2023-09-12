@@ -7,8 +7,8 @@ import { clearToken } from "../../features/redux/slice/user/TokenSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { RootState } from "../../features/redux/reducers/Reducer";
-import { fetchUser,
-  clearUserDetails } from "../../features/redux/slice/user/UserDetailsSlice";
+import { fetchUser, 
+  clearUserDetails, } from "../../features/redux/slice/user/UserDetailsSlice";
 
 const navigation = [{ name: "Jobs", href: "/job/all-jobs", current: false }];
 
@@ -57,13 +57,13 @@ function UserHeader() {
                   <div className="flex flex-shrink-0 items-center">
                     <img
                       className="block h-8 w-auto lg:hidden"
-                      src=""
+                      src="https://res.cloudinary.com/dgjwhf8i3/image/upload/v1685793152/Screenshot_2023-06-03_172145_pfhklc.jpg"
                       alt="Your Company"
                     />
                     <Link to={"/user/home"}>
                       <img
                         className="hidden h-8 w-auto lg:block"
-                        src=""
+                        src="https://res.cloudinary.com/dgjwhf8i3/image/upload/v1685793152/Screenshot_2023-06-03_172145_pfhklc.jpg"
                         alt="Your Company"
                       />
                     </Link>
