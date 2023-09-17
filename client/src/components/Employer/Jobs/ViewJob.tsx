@@ -15,7 +15,7 @@ import {
 } from "@heroicons/react/20/solid";
 import { Breadcrumbs } from "@material-tailwind/react";
 
-function  EmployerViewJob() {
+function EmployerViewJob() {
   const dispatch = useDispatch();
   const jobId: string =
     useSelector((state: RootState) => state.employerJobDetails.jobId) ?? "";

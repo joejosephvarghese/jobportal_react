@@ -8,7 +8,8 @@ function UserHomePage() {
     <div>
       <UserHeader />
       <UserHome />
-      <UserSideFooter/>
+  
+      {/* <UserSideFooter/> */}
     </div>
   );
 }

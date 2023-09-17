@@ -47,12 +47,11 @@ export function Sidenav({ routes }: NavbarProps) {
       <div className={`relative border-b ${"border-blue-gray-50"}`}>
         <Link to="/" className="flex items-center gap-4 py-6 px-8">
           <Avatar
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-            className="h-6 w-6"
-            />
-    
-          <Typography variant="h6" color="blue">
-            jobportal
+            src=""
+            size="sm"
+          />
+          <Typography variant="h6" color="black">
+            Job Portal
           </Typography>
         </Link>
         <IconButton
@@ -61,7 +60,7 @@ export function Sidenav({ routes }: NavbarProps) {
           size="sm"
           ripple={false}
           className="absolute right-0 top-0 grid rounded-br-none rounded-tl-none xl:hidden"
-            // onClick={() => setOpenSidenav(dispatch, false)}
+          //   onClick={() => setOpenSidenav(dispatch, false)}
         >
           <XMarkIcon strokeWidth={2.5} className="h-5 w-5 text-white" />
         </IconButton>
@@ -74,7 +73,7 @@ export function Sidenav({ routes }: NavbarProps) {
                 <Typography
                   variant="small"
                   color="blue-gray"
-                  className="font-semibold text-xs opacity-75 uppercase"
+                  className="font-black uppercase opacity-75"
                 >
                   {title}
                 </Typography>

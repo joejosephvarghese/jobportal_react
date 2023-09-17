@@ -105,11 +105,11 @@ function AllJobsEmployer() {
             </div>
             <div className="w-full md:w-72">
               <Input
-                              label="Search"
-                              color="purple"
-                              icon={<MagnifyingGlassIcon className="h-5 w-5" />}
-                              value={searchQuery}
-                              onChange={(e) => setSearchQuery(e.target.value)} crossOrigin={undefined}              />
+                label="Search"
+                color="purple"
+                icon={<MagnifyingGlassIcon className="h-5 w-5" />}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)} crossOrigin={undefined}              />
             </div>
           </div>
         </CardHeader>
