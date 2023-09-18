@@ -32,7 +32,7 @@ function UserProfile() {
   const [showKeySkillUpload, setShowSkillUpload] = useState(false);
 
   const resumeUrl = userDetails?.resume;
-
+   
   useEffect(() => {
     const userInfo = async () => {
       const data = await userData();
@@ -52,6 +52,9 @@ function UserProfile() {
   const deleteButtonHandle = () => {
     setShowDeleteConfirmation(true);
   };
+  console.log('====================================');
+  console.log(resumeUrl);
+  console.log('====================================');
 
   return (
     <div className="pl-16 pr-16 pt-10">

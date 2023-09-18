@@ -39,6 +39,7 @@ export const uploadResume = async (file: File): Promise<any> => {
   try {
     const payload = new FormData();
     payload.append("image", file);
+    console.log(payload,"ooooooo");
 
     const config: AxiosRequestConfig = {
       url: apiConfig.uploadResume,

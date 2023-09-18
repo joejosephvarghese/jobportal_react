@@ -9,7 +9,6 @@ import jobApplicationRouter from "./jobApplication";
 
 const routes = (app: Application) => {
     app.use('/api/user', userRouter());
- 
     app.use('/api/user-auth', userAuthRouter());
     app.use('/api/employer-auth', employerAuthRouter());
     app.use('/api/employer',employerRouter());

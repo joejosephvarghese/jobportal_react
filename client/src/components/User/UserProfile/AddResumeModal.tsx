@@ -28,6 +28,7 @@ export default function AddResume({
 
   const handleSubmit = async () => {
     try {
+      console.log(selectedFile,"kkk");
       if (selectedFile) {
         setUploaded(true);
         await uploadResume(selectedFile).then((response) => {
