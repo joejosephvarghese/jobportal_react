@@ -18,6 +18,7 @@ const adminRouter =()=>{
     );
   
     route.post("/login", controller.adminLogin);
+    route.get( "/get-all-users",authenticationMiddleware,adminRoleCheckMiddleware,controller.adminGetAllUsers);
  
     return route;
 }

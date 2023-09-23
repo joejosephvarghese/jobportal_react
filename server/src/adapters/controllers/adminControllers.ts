@@ -6,7 +6,7 @@ import { CustomRequest } from "../../types/expressRequest";
 import { AuthService } from "../../frameworkes/services/authService";
 import { AdminDbInterface } from "../../app/repositories/adminDbRepository";
 import { AdminRepossitoryMongoDB } from "../../frameworkes/database/mongoDb/repositories/adminRepoMongoDB";
-import { adminLoginUseCase } from "../../app/repositories/useCases/adminAuth";
+import { adminLoginUseCase,adminGetAllUsersUseCase } from "../../app/repositories/useCases/adminAuth";
 
 const adminController = (
     authServiceInterface: AuthServiceInterface,
@@ -28,10 +28,18 @@ const adminController = (
             token
         })
     })
+
+    const adminGetAllUsers = expressAsyncHandler(async (req: Request,res: Response)=>{
+        const userData = await adminGetAllUsersUseCase(dbRepositoryAdmin)
+        res.json({
+            status: 'success',
+            userData
+        })
+    })
    
     return{
    adminLogin,
-
+   adminGetAllUsers,
     }
 }
 export default adminController
