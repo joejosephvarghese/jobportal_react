@@ -21,7 +21,7 @@ function UserHome() {
   return (
     <div className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
       <img
-        src=""
+        src="https://img.freepik.com/free-photo/rear-view-adult-man-searching-new-job-working-writing-his-resume-laptop_662251-2153.jpg?w=1060&t=st=1695193736~exp=1695194336~hmac=54f1f03abb424579cc65f92531ea162a1776d69eef083d3bf288ddcf8700dcb0"
         alt=""
         className="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center"
       />

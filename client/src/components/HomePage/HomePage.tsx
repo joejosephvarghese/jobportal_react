@@ -38,7 +38,7 @@ function HomePage() {
   return (
     <div className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
       <img
-        src=""
+        src="https://img.freepik.com/free-photo/rear-view-adult-man-searching-new-job-working-writing-his-resume-laptop_662251-2153.jpg?w=1060&t=st=1695193606~exp=1695194206~hmac=c185752167344e3e99e10a4da9b5fcc857cc56f8507582d5a35c0db626cd6c9c"
         alt=""
         className="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center"
       />

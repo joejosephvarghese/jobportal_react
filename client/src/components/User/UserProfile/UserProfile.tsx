@@ -52,9 +52,7 @@ function UserProfile() {
   const deleteButtonHandle = () => {
     setShowDeleteConfirmation(true);
   };
-  console.log('====================================');
-  console.log(resumeUrl);
-  console.log('====================================');
+
 
   return (
     <div className="pl-16 pr-16 pt-10">

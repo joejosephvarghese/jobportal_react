@@ -6,8 +6,11 @@ import authenticationMiddleware from "../middleware/authenticationMiddleware";
 import employerRouter from "./employer";
 import jobRouter from "./jobs";
 import jobApplicationRouter from "./jobApplication";
+import adminRouter from "./admin";
+
 
 const routes = (app: Application) => {
+    app.use('/api/admin',adminRouter())
     app.use('/api/user', userRouter());
     app.use('/api/user-auth', userAuthRouter());
     app.use('/api/employer-auth', employerAuthRouter());

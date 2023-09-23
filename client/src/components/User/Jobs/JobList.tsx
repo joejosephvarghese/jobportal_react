@@ -18,6 +18,7 @@ interface AllJobsProps {
   setSelected: Dispatch<SetStateAction<string>>;
 }
 
+
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
@@ -29,6 +30,9 @@ const JobList: React.FC<AllJobsProps> = ({ jobs, selected, setSelected }) => {
     dispatch(setJobId(jobId));
     setSelected(jobId);
   };
+  console.log('====================================');
+  console.log(JobList);
+  console.log('====================================');
 
   return (
     <>
