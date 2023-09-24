@@ -56,6 +56,15 @@ export const adminLoginUseCase = async (
     return EmployerData;
   };
 
-  
+  export const adminBlockUserUseCase = async (
+    adminDbRepository: ReturnType<AdminDbInterface>,
+    ojbId: string
+  ) => {
+    const adminBlockUser = await adminDbRepository.blockUser(ojbId);
+    if (!adminBlockUser) {
+      throw new AppError("Operation failed", HttpStatus.NOT_MODIFIED);
+    }
+    return adminBlockUser;
+  };
 
   

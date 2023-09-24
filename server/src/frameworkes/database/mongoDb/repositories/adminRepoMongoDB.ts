@@ -19,11 +19,21 @@ export const adminRepositoryMongoDB = () => {
       const AllEmployers = await Employer.find();
       return AllEmployers;
     };
-    
+    const blockUser = async (objId: string) => {
+      const id = new Types.ObjectId(objId);
+      const user = await User.findById(id);
+      const status = !user?.isActive;
+      const result = await User.findOneAndUpdate(
+        { _id: id },
+        { $set: { isActive: status } }
+      );
+      return result;
+    };
     return{
         getAdminByEmail,
         getAllusers,
         getAllEmployers,
+        blockUser,
     }
 }
 export type AdminRepossitoryMongoDB = typeof adminRepositoryMongoDB;

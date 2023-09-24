@@ -20,7 +20,7 @@ const adminRouter =()=>{
     route.post("/login", controller.adminLogin);
     route.get( "/get-all-users",authenticationMiddleware,adminRoleCheckMiddleware,controller.adminGetAllUsers);
     route.get("/get-all-employers",authenticationMiddleware,adminRoleCheckMiddleware,controller.adminGetAllEmployers);
- 
+    route.post("/block-user/:id",authenticationMiddleware,adminRoleCheckMiddleware,controller.adminBlockUser);
     return route;
 }
 
