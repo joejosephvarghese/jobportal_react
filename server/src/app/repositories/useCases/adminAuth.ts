@@ -46,4 +46,16 @@ export const adminLoginUseCase = async (
     return userData;
   };
 
+  export const adminGetAllEmployerUseCase = async (
+    adminDbRepository: ReturnType<AdminDbInterface>
+  ) => {
+    const EmployerData = await adminDbRepository.getAllEmployers();
+    if (!EmployerData) {
+      throw new AppError("No agents found", HttpStatus.NOT_FOUND);
+    }
+    return EmployerData;
+  };
+
+  
+
   

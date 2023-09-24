@@ -15,10 +15,15 @@ export const adminRepositoryMongoDB = () => {
       const AllUsers = await User.find();
       return AllUsers;
     };
-  
+    const getAllEmployers = async () => {
+      const AllEmployers = await Employer.find();
+      return AllEmployers;
+    };
+    
     return{
         getAdminByEmail,
         getAllusers,
+        getAllEmployers,
     }
 }
 export type AdminRepossitoryMongoDB = typeof adminRepositoryMongoDB;
