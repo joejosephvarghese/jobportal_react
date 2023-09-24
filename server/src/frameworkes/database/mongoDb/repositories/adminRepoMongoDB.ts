@@ -29,11 +29,25 @@ export const adminRepositoryMongoDB = () => {
       );
       return result;
     };
+    const blockEmployer = async (objId: string) => {
+      const id = new Types.ObjectId(objId);
+      const employer = await Employer.findById(id);
+      console.log(employer,"previous week employer");
+      const status = !employer?.isActive;
+      console.log(status,"status");
+      const result = await Employer.findOneAndUpdate(
+        { _id: id },
+        { $set: { isActive: status } },
+      );
+      console.log(result,"updatedusr");
+      return result;
+    };
     return{
         getAdminByEmail,
         getAllusers,
         getAllEmployers,
         blockUser,
+        blockEmployer,
     }
 }
 export type AdminRepossitoryMongoDB = typeof adminRepositoryMongoDB;
