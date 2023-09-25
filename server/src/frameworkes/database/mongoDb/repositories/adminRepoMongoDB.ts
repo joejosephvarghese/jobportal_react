@@ -57,13 +57,18 @@ export const adminRepositoryMongoDB = () => {
   
       return result;
     };
+
+    const getUnverifiedEmployers = async () => {
+      const result = await Employer.find({ isVerified: false });
+      return result;
+    };
     return{
         getAdminByEmail,
         getAllusers,
         getAllEmployers,
         blockUser,
         blockEmployer,
-        verifyEmployer
+        verifyEmployer,getUnverifiedEmployers
     }
 }
 export type AdminRepossitoryMongoDB = typeof adminRepositoryMongoDB;
