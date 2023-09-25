@@ -42,12 +42,28 @@ export const adminRepositoryMongoDB = () => {
       console.log(result,"updatedusr");
       return result;
     };
+
+    const verifyEmployer = async (objId: string) => {
+      const id = new Types.ObjectId(objId);
+      const result = await Employer.findOneAndUpdate(
+        {
+          _id: id,
+        },
+        {
+          $set: { isVerified: true },
+        }
+      );
+  
+  
+      return result;
+    };
     return{
         getAdminByEmail,
         getAllusers,
         getAllEmployers,
         blockUser,
         blockEmployer,
+        verifyEmployer
     }
 }
 export type AdminRepossitoryMongoDB = typeof adminRepositoryMongoDB;

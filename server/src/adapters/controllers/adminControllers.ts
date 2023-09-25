@@ -6,7 +6,7 @@ import { CustomRequest } from "../../types/expressRequest";
 import { AuthService } from "../../frameworkes/services/authService";
 import { AdminDbInterface } from "../../app/repositories/adminDbRepository";
 import { AdminRepossitoryMongoDB } from "../../frameworkes/database/mongoDb/repositories/adminRepoMongoDB";
-import { adminLoginUseCase,adminGetAllUsersUseCase,adminGetAllEmployerUseCase,adminBlockUserUseCase, adminBlockEmployerUseCase } from "../../app/repositories/useCases/adminAuth";
+import { adminLoginUseCase,adminGetAllUsersUseCase,adminGetAllEmployerUseCase,adminBlockUserUseCase, adminBlockEmployerUseCase,adminVerifyEmployerUseCase } from "../../app/repositories/useCases/adminAuth";
 
 const adminController = (
     authServiceInterface: AuthServiceInterface,
@@ -63,6 +63,14 @@ const adminController = (
             result
         })
     }) 
+    const verifyEmployer = expressAsyncHandler(async (req:Request,res:Response)=>{
+        const EmployerId = req.params.id
+        const result = await adminVerifyEmployerUseCase(dbRepositoryAdmin, EmployerId)
+        res.json({
+            status: 'success',
+            result
+        })
+    })
   
    
     return{
@@ -71,6 +79,7 @@ const adminController = (
    adminGetAllEmployers,
    adminBlockUser,
    adminBlockEmployer,
+   verifyEmployer,
     }
 }
 export default adminController
