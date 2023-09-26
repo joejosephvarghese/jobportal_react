@@ -1,7 +1,7 @@
 import { CreateEmployerInterface, EmployerInterface } from "../../../../types/employerInterface";
 import { EmployerModel } from "../../models/employerModel";
 import { EmployerEntity } from "../../../../entities/EmployerEntity";
-
+import { Types } from "mongoose";
 export const EmployerRepositoryMongoDB = (model: EmployerModel) =>{
     const employerEntity = new EmployerEntity(model);
 
@@ -24,12 +24,17 @@ export const EmployerRepositoryMongoDB = (model: EmployerModel) =>{
         const employer = employerEntity.updateEmployer(employerId, updates);
         return employer;
     }
-
+    const checkEmployerVerified = async (EmployerId: string) => {
+        const id = new Types.ObjectId(EmployerId);
+        const result = await model.findOne({ _id: id, isVerified: true });
+        return result ? true : false;
+      };
     return {
         getEmployerByEmail,
         createEmployer,
         getEmployerById,
         updateEmployer,
+        checkEmployerVerified
     }
 }
 

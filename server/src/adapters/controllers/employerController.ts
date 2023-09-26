@@ -7,7 +7,8 @@ import { EmployerModel } from "../../frameworkes/database/models/employerModel";
 import { EmployerInterface } from "../../types/employerInterface";
 import AppError from "../../utils/appError";
 import { HttpStatus } from "../../types/httpStatus";
-import {updatedEmployer,findEmployerById } from "../../app/repositories/useCases/employer/employer";
+import {updatedEmployer,findEmployerById, checkEmployerVerificationUseCase } from "../../app/repositories/useCases/employer/employer";
+
 
 const employerController = (
   employerDbRepository: EmployerDbInterface,
@@ -66,11 +67,25 @@ const employerController = (
     }
   );
 
+  const checkEmployerVerified = expressAsyncHandler(async(req: CustomRequest,res:Response)=>{
+    const customReq = req as CustomRequest;
+    const EmployerId = customReq.payload ?? "";
+    const result = await checkEmployerVerificationUseCase(EmployerId,dbRepositoryEmployer)
+    res.json({
+      status: true,
+      message: 'successfully checked agent verified or not',
+      result
+    })
+  })
+
   return {
     getEmployerById,
     updateEmployer,
     getEmployerByIdParam,
+    checkEmployerVerified
   };
 };
+
+
 
 export default employerController;

@@ -9,19 +9,60 @@ import { registerEmployer } from "../../../features/axios/api/employer/employerA
 import { EmployerRegisterPayload } from "../../../types/PayloadInterface";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../features/redux/reducers/Reducer";
+import * as Yup from "yup";
+import { useFormik } from "formik";
+import { any } from "prop-types";
 
 function EmployerRegister() {
   const navigate = useNavigate();
-  const employerEmail = useSelector((state: RootState) => state.employerDetails.employerEmail);
+  const employerEmail = useSelector(
+    (state: RootState) => state.employerDetails.employerEmail
+  );
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<EmployerRegisterPayload>({
-    resolver: yupResolver(employerRegisterValidationSchema as any), // Type assertion
-  });
   
+
+  // to remove after using formik
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   formState: { errors },
+  // } = useForm<EmployerRegisterPayload>({
+  //   resolver: yupResolver(employerRegisterValidationSchema as any),
+  // });
+
+  const formik = useFormik<EmployerRegisterPayload>({
+    initialValues: {
+      companyName: "",
+      industry: "",
+      location: "",
+      idProof_img: null,
+      password: "",
+      confirmPassword: "",
+      image: "",
+      about: "",
+      isVerified: false,
+      email: "",
+    },
+    validationSchema: employerRegisterValidationSchema,
+    onSubmit: (values) => {
+      console.log("in formik", values);
+      registerEmployer({...values})
+          .then((response) => {
+            notify("Registration success", "success");
+            setTimeout(() => {
+              navigate("/employer/login");
+            }, 2000);
+          })
+          .catch((error: any) => {
+            notify(error.message, "error");
+          });
+    },
+  });
+
+  React.useEffect(() =>{
+    formik.setFieldValue("email", employerEmail);
+  }, []);
+
 
   const notify = (msg: string, type: string) => {
     type === "error"
@@ -29,35 +70,18 @@ function EmployerRegister() {
       : toast.success(msg, { position: toast.POSITION.TOP_RIGHT });
   };
 
-  const submitHandler = async (formData: EmployerRegisterPayload) => {
-    registerEmployer(formData)
-      .then((response) => {
-        notify("Registration success", "success");
-        setTimeout(() => {
-          navigate('/employer/login');
-        }, 2000);
-      })
-      .catch((error: any) => {
-        notify(error.message, "error");
-      });
-  };
-
   return (
     <>
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+      <div className="flex min-h-screen flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <img
-                className="mx-auto h-10 w-auto"
-                src="https://res.cloudinary.com/dgjwhf8i3/image/upload/v1689059504/talentHive_cjcdcg.jpg"
-                alt="Your Company"
-            />
+          <img className="mx-auto h-10 w-auto" src="https://res.cloudinary.com/dpgbodkae/image/upload/v1695012129/found_it-logos_black_wgrai8.png" alt="Your Company" />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Create your account
           </h2>
         </div>
-
+  
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" onSubmit={handleSubmit(submitHandler)}>
+          <form className="space-y-6" onSubmit={formik.handleSubmit}>
             <div>
               <label
                 htmlFor="companyName"
@@ -69,17 +93,18 @@ function EmployerRegister() {
                 <input
                   id="companyName"
                   type="text"
-                  placeholder="company Name"
-                  {...register("companyName")}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-purple-500"
+                  placeholder="Company Name"
+                  {...formik.getFieldProps("companyName")}
+                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-brown-500"
                 />
-                {errors.companyName && (
+                {formik.errors.companyName && (
                   <p className="text-red-500 text-sm">
-                    {errors.companyName.message}
+                    {formik.errors.companyName}
                   </p>
                 )}
               </div>
             </div>
+  
             <div>
               <label
                 htmlFor="industry"
@@ -92,24 +117,44 @@ function EmployerRegister() {
                   id="industry"
                   type="text"
                   placeholder="Industry Name"
-                  {...register("industry")}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-purple-500"
+                  {...formik.getFieldProps("industry")}
+                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-brown-500"
                 />
-                {errors.industry && (
+                {formik.errors.industry && (
                   <p className="text-red-500 text-sm">
-                    {errors.industry.message}
+                    {formik.errors.industry}
                   </p>
                 )}
               </div>
             </div>
+  
             <div>
-              <input
-                type="hidden"
-                {...register("email")}
-                defaultValue={employerEmail ?? ''}
-              />
+              <label
+                htmlFor="idProof_img"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                ID Proof
+              </label>
+              <div className="mt-2">
+                <input
+                  type="file"
+                  id="idProof_img"
+                  onChange={(event) => {
+                    const selectedFile = event.currentTarget.files?.[0];
+                    if (selectedFile) {
+                      formik.setFieldValue("idProof_img", selectedFile);
+                    }
+                  }}
+                  placeholder="Please select ID proof"
+                />
+                {formik.errors.idProof_img && (
+                  <p className="text-red-500 text-sm">
+                    {formik.errors.idProof_img}
+                  </p>
+                )}
+              </div>
             </div>
-
+  
             <div>
               <label
                 htmlFor="location"
@@ -122,90 +167,77 @@ function EmployerRegister() {
                   id="location"
                   type="text"
                   placeholder="Location"
-                  {...register("location")}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-purple-500"
+                  {...formik.getFieldProps("location")}
+                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-brown-500"
                 />
-                {errors.location && (
+                {formik.errors.location && (
                   <p className="text-red-500 text-sm">
-                    {errors.location.message}
+                    {formik.errors.location}
                   </p>
                 )}
               </div>
             </div>
-
+  
             <div>
-              <div className="flex items-center justify-between">
-                <label
-                  htmlFor="password"
-                  className="block text-sm font-medium leading-6 text-gray-900"
-                >
-                  Password
-                </label>
-                {/* <div className="text-sm">
-                  <a
-                    href="s"
-                    className="font-semibold text-indigo-600 hover:text-indigo-500"
-                  >
-                    Forgot password?
-                  </a>
-                </div> */}
-              </div>
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                Password
+              </label>
               <div className="mt-2">
                 <input
                   id="password"
                   type="password"
                   placeholder="Password"
-                  {...register("password")}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-purple-500"
+                  {...formik.getFieldProps("password")}
+                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-brown-500"
                 />
-                {errors.password && (
+                {formik.errors.password && (
                   <p className="text-red-500 text-sm">
-                    {errors.password.message}
+                    {formik.errors.password}
                   </p>
                 )}
               </div>
             </div>
+  
             <div>
-              <div className="flex items-center justify-between">
-                <label
-                  htmlFor="password"
-                  className="block text-sm font-medium leading-6 text-gray-900"
-                >
-                  Confirm Password
-                </label>
-              </div>
+              <label
+                htmlFor="confirmPassword"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                Confirm Password
+              </label>
               <div className="mt-2">
                 <input
                   id="confirmPassword"
                   type="password"
                   placeholder="Confirm password"
-                  {...register("confirmPassword")}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-purple-500"
+                  {...formik.getFieldProps("confirmPassword")}
+                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-brown-500"
                 />
-                {errors.confirmPassword && (
+                {formik.errors.confirmPassword && (
                   <p className="text-red-500 text-sm">
-                    {errors.confirmPassword.message}
+                    {formik.errors.confirmPassword}
                   </p>
                 )}
               </div>
             </div>
-
+  
             <div>
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-purple-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-purple-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600"
+                className="flex w-full justify-center rounded-md bg-brown-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-brown-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brown-600"
               >
                 Sign Up
               </button>
             </div>
           </form>
-
+  
           <p className="mt-10 text-center text-sm text-gray-500">
-            Already have an account ?{" "}
-            <Link to={"/employer/login"}>
-              <span className="font-semibold leading-6 text-purple-600 hover:text-purple-500">
-                Sign In
-              </span>
+            Already have an account?{" "}
+            <Link to="/employer/login" className="font-semibold leading-6 text-brown-600 hover:text-brown-500">
+              Sign In
             </Link>
           </p>
         </div>

@@ -21,12 +21,14 @@ export const employerDbRepository = (
        const employer  = await repository.updateEmployer(employerId, updates);
        return employer;
    }
+   const checkEmployerVerified = async(EmployerId: string)=> await repository.checkEmployerVerified(EmployerId)
 
    return {
        getEmployerByEmail,
        createEmployer,
        findEmployerById,
-       updateEmployer
+       updateEmployer,
+       checkEmployerVerified
    }
 }
 

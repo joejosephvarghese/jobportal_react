@@ -7,6 +7,7 @@ import { authServiceInterface } from "../../../app/services/authServiceInterface
 import { Employer } from "../../database/models/employerModel";
 import { emailServiceInterface } from "../../../app/services/emailServiceInterface";
 import { sendEmailService } from "../../services/emailServce";
+import { uploads } from "../middleware/multerCloudinary";
 
 const employerAuthRouter = () => {
   const route = express.Router();
@@ -21,7 +22,7 @@ const employerAuthRouter = () => {
     sendEmailService
   );
 
-  route.post("/register", controller.employerRegister);
+  route.post("/register",uploads, controller.employerRegister);
   route.post("/login", controller.loginEmployer);
   route.get("/email-verify/:emailId", controller.emailVerification);
   route.get("/email-OTP/:OTP", controller.OTPVerification);

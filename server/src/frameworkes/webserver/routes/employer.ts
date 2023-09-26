@@ -3,7 +3,7 @@ import employerController from '../../../adapters/controllers/employerController
 import { employerDbRepository } from '../../../app/repositories/employerDbRepository';
 import { EmployerRepositoryMongoDB } from '../../database/mongoDb/repositories/employerRepositoryMongoDB';
 import { Employer } from '../../database/models/employerModel';
-import { upload } from '../middleware/multerCloudinary';
+import { uploads } from '../middleware/multerCloudinary';
 import authenticationMiddleware from '../middleware/authenticationMiddleware';
 import roleMiddleware from '../middleware/roleMiddleware';
 
@@ -20,8 +20,9 @@ const employerRouter = () => {
     );
 
     route.get('/employer-data',authenticationMiddleware, employerMiddleware, controller.getEmployerById);
-    route.put('/update-employer',authenticationMiddleware, employerMiddleware, upload, controller.updateEmployer);
+    route.put('/update-employer',authenticationMiddleware, employerMiddleware, uploads, controller.updateEmployer);
     route.get('/employer-data/:empId', controller.getEmployerByIdParam);;
+    route.get('/isverified',authenticationMiddleware, employerMiddleware,controller.checkEmployerVerified)
    
 
     return route;

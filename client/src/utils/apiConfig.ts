@@ -24,7 +24,9 @@ const apiConfig = {
     allJobs: `${configKeys.API_URL}job/all-jobs`,
     filterJobs: `${configKeys.API_URL}job/filter-jobs`,
     titleLocationSalary: `${configKeys.API_URL}job/distinct`,
+    Employer_Verification_check:`${configKeys.API_URL}employer/isVerified`,
 
+    
     applyJob: `${configKeys.API_URL}job-application/create-application`,
     isApplied: `${configKeys.API_URL}job-application/is-applied`,
     allApplication: `${configKeys.API_URL}job-application/all-applications`,
@@ -42,6 +44,8 @@ const apiConfig = {
    ADMIN_BLOCK_USER: `admin/block-user/`,
    ADMIN_GET_ALL_EMPLOYERS: `admin/get-all-employers`,
    ADMIN_BLOCK_EMPLOYER: `admin/block-employer/`,
+   ADMIN_VERIFY_EMPLOYER: `admin/Employer-verification/`,
+   ADMIN_GET_ALL_UNVERIFIED_EMPLOYERS: `admin/get-all-unverified-Employers`
 }
 
 export default apiConfig;

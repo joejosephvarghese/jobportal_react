@@ -33,3 +33,11 @@ export const updatedEmployer = (
         throw new Error(`error while updating the employer ${error.message}`);
     }
 }
+
+export const checkEmployerVerificationUseCase = async(
+    EmployerId: string,
+    dbRepositoryEmployer: ReturnType<EmployerDbInterface>
+  ) => {
+    const result = await dbRepositoryEmployer.checkEmployerVerified(EmployerId)
+    return result
+  }
