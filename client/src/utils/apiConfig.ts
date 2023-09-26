@@ -38,6 +38,8 @@ const apiConfig = {
 
     //admin
    ADMIN_LOGIN:`${configKeys.API_URL}admin/login`,
+   ADMIN_GET_ALL_USERS: `admin/get-all-users`,
+   ADMIN_BLOCK_USER: `admin/block-user/`,
 }
 
 export default apiConfig;

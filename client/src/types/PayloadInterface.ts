@@ -8,15 +8,15 @@ export interface SignupPayload extends LoginPayload {
   phone: string;
   confirmPassword: string;
 }
-
 export interface EmployerRegisterPayload extends LoginPayload {
-  _id: string;
   companyName: string;
   industry: string;
   confirmPassword: string;
   location: string;
   image: string;
   about: string;
+  isVerified: boolean;
+  idProof_img: File | null;
 }
 
 export interface UserDataPayload {

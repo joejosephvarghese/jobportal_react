@@ -5,6 +5,8 @@ export interface UserInterface {
   phone?: string;
   image?: any;
   resume?: string;
+  isVerified?:boolean;
+  isActive?:boolean
   about?: string;
   profession?: string;
   location?: string;
