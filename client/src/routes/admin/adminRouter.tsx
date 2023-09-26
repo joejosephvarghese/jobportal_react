@@ -3,7 +3,7 @@ import AdminLoginForm from "../../components/admin/Login/AdminLogin";
 import { Admin } from "../../pages/admin/adminDash";
 import Dashboard from "../../components/Employer/Employer/Dashboard";
 import AdminUser from "../../components/admin/Body/pages/AdminUser";
-
+import AdminEmployer from "../../components/admin/Body/pages/AdminEmployer";
 const AdminRouter = () => {
     return (
       <div>
@@ -12,6 +12,7 @@ const AdminRouter = () => {
        <Route path="" element={<Admin />}>
        <Route index element={<Dashboard />} />
        <Route path="/users" element={<AdminUser />} />
+       <Route path="/employers" element={<AdminEmployer />} />
       </Route>
 </Routes>
       </div>
