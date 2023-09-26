@@ -34,6 +34,10 @@ const apiConfig = {
 
     getConversations: `${configKeys.API_URL}messenger-conversation`,
     getMessages: `${configKeys.API_URL}messenger-message`,
+
+
+    //admin
+   ADMIN_LOGIN:`${configKeys.API_URL}admin/login`,
 }
 
 export default apiConfig;

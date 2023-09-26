@@ -6,6 +6,7 @@ import HomeRouter from "./routes/home/HomeRouter";
 import JobRouter from "./routes/jobs/JobRouter";
 import ApplicationRouter from "./routes/applications/applicationRouter";
 
+import AdminRouter from "./routes/admin/adminRouter";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
           <Route path="/employer/*" element={<EmployerRouter />} />
           <Route path="/job/*" element={<JobRouter />} />
           <Route path="/application/*" element={<ApplicationRouter />} />
-     
+          <Route path="/admin/*" element={<AdminRouter/>}/>
           <Route path="/*" element={<NotFound />} />
         </Routes>
       </Router>
