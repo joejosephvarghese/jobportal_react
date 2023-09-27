@@ -32,6 +32,7 @@ function EmployerRegister() {
 
   const formik = useFormik<EmployerRegisterPayload>({
     initialValues: {
+       _id:"",
       companyName: "",
       industry: "",
       location: "",

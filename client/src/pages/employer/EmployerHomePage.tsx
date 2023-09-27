@@ -6,7 +6,9 @@ import AllJobsEmployer from "../../components/Employer/Employer/AllJobsEmployer"
 import Dashboard from "../../components/Employer/Employer/Dashboard";
 import Applications from "../../components/Employer/Employer/Applications";
 import EmployerHeaderWithNav from "../../components/Header/EmployerHeaderWithNav";
-
+import EmployerProfile from "../../components/Employer/Profile/EmployerProfile";
+import EmployerEditProfile from "../../components/Employer/Profile/EmployerEditProfile";
+import EmployerMessenger from "../messenger/EmployerMessenger";
 
 
 function EmployerHomePage() {
@@ -20,9 +22,12 @@ function EmployerHomePage() {
           <EmployerHeaderWithNav />
         </div>
         <Routes>
-          <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/all-jobs" element={<AllJobsEmployer />} />
           <Route path="/applications" element={<Applications />} />
+          <Route path="/profile" element={<EmployerProfile/>}/>
+          <Route path="/edit-profile" element={ <EmployerEditProfile/>} />
+          <Route path="/messenger" element={<EmployerMessenger/>} />
        
           {/* Add more routes here */}
         </Routes>

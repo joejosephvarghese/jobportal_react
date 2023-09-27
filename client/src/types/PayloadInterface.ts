@@ -9,6 +9,8 @@ export interface SignupPayload extends LoginPayload {
   confirmPassword: string;
 }
 export interface EmployerRegisterPayload extends LoginPayload {
+  
+  _id: string;
   companyName: string;
   industry: string;
   confirmPassword: string;

@@ -5,7 +5,7 @@ import NotFound from "./components/Error/NotFound";
 import HomeRouter from "./routes/home/HomeRouter";
 import JobRouter from "./routes/jobs/JobRouter";
 import ApplicationRouter from "./routes/applications/applicationRouter";
-
+import MessengerRouter from "./routes/messenger/MessengerRouter";
 import AdminRouter from "./routes/admin/adminRouter";
 
 function App() {
@@ -19,6 +19,7 @@ function App() {
           <Route path="/job/*" element={<JobRouter />} />
           <Route path="/application/*" element={<ApplicationRouter />} />
           <Route path="/admin/*" element={<AdminRouter/>}/>
+          <Route path="/messenger/*" element={<MessengerRouter />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
       </Router>
