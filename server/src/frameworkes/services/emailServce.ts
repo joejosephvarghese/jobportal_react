@@ -2,6 +2,7 @@ import nodemailer, { Transporter } from "nodemailer";
 import configKeys from "../../config";
 
 export const sendEmailService = () => {
+  console.log(configKeys.NODE_MAIL_PASS);
   const transporter: Transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {

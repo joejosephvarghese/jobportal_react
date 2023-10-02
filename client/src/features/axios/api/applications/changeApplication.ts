@@ -1,10 +1,12 @@
 import { AxiosRequestConfig } from "axios";
 import setupAxiosInterceptorsEmployer from "../../interceptors/axiosInterceptorEmployer";
 import apiConfig from "../../../../utils/apiConfig";
+// import { log } from "console";
 
 const api = setupAxiosInterceptorsEmployer();
 
 export const changeApplicationStatus = async (applicationId: string, status: string) : Promise<any> => {
+
     try {
         const config: AxiosRequestConfig = {
             url: `${apiConfig.changeStatus}/${applicationId}`,

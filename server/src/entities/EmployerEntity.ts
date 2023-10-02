@@ -15,6 +15,7 @@ export class EmployerEntity {
 
   public async createEmployer(employer: CreateEmployerInterface): Promise<EmployerInterface> {
     const newEmployer = await this.model.create(employer);
+   
     return newEmployer;
   }
 

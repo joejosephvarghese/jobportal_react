@@ -1,6 +1,7 @@
-import { Schema, model } from "mongoose";
+import { Schema, model,ObjectId } from "mongoose";
 
 const employerSchema = new Schema({
+
   companyName: {
     type: String,
     required: [true, "Please add a company name"],

@@ -38,7 +38,7 @@ const employerAuthController = (
       if (req.file) {
         employer.idProof_img = req.file.path;
       }
-      await registerEmployer(employer,dbRepositoryEmployer, authService);
+       await registerEmployer(employer,dbRepositoryEmployer, authService);
       res.json({
         status: "success",
         message: "employer registered successfully",

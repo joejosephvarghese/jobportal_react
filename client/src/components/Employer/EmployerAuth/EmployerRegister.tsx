@@ -11,7 +11,6 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../features/redux/reducers/Reducer";
 import * as Yup from "yup";
 import { useFormik } from "formik";
-import { any } from "prop-types";
 
 function EmployerRegister() {
   const navigate = useNavigate();
@@ -47,7 +46,8 @@ function EmployerRegister() {
     validationSchema: employerRegisterValidationSchema,
     onSubmit: (values) => {
       console.log("in formik", values);
-      registerEmployer({...values})
+      const {_id, ...payload} = values
+      registerEmployer({...payload})
           .then((response) => {
             notify("Registration success", "success");
             setTimeout(() => {

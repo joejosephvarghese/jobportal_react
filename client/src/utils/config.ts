@@ -1,6 +1,6 @@
 const configKeys = {
-    API_URL: "http://localhost:5000/api/",
-    SOCKET_PORT: "http://localhost:5000"
+    API_URL: "http://localhost:5001/api/",
+    SOCKET_PORT: "http://localhost:5001"
   };
    
   export default configKeys;

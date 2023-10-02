@@ -11,14 +11,19 @@ export const registerEmployer = async (
   authService: ReturnType<AuthServiceInterface>
 ) => {
   employer.email = employer?.email?.toLowerCase();
+ 
   const isExistingEmail = await employerRepository.getEmployerByEmail(
     employer.email ?? ''
   );
+ 
   if (isExistingEmail) {
     throw new AppError("email already exists", HttpStatus.CONFLICT);
   }
+  console.log("hhhhhhhhhhhhhh");
   employer.password = await authService.encryptPassword(employer.password ?? '');
+  console.log("hhhhhhhhhhhhhh");
   const result = await employerRepository.createEmployer(employer);
+  console.log("hhhhhhhhhhhhhh");
   return result;
 };
 

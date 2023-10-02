@@ -1,6 +1,7 @@
 import {Types} from "mongoose";
 
 export interface CreateEmployerInterface {
+   
     companyName?: string,
     industry?: string,
     email?: string,
