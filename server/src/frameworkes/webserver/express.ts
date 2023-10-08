@@ -7,7 +7,7 @@ const expressConfig = (app: Application) =>{
     app.use(cookieParser());
     app.use(morgan('dev'));
     app.use(cors({
-        origin:["https://jobsync.online"],
+        origin:["http://localhost:5001"],
         credentials:true,
     }));
     app.use(express.json());

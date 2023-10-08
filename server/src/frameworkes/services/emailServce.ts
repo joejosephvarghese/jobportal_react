@@ -2,7 +2,6 @@ import nodemailer, { Transporter } from "nodemailer";
 import configKeys from "../../config";
 
 export const sendEmailService = () => {
-  console.log(configKeys.NODE_MAIL_PASS);
   const transporter: Transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -25,7 +24,7 @@ export const sendEmailService = () => {
 
     console.log(otpData);
     const mailOptions = {
-      from: "joejosephvarghese94@gmail.com",
+      from: configKeys.NODE_MAIL_USER,
       to: email,
       subject: "OTP for Login",
       text: `Your OTP for login is: ${otp}`,

@@ -26,7 +26,9 @@ expressConfig(app);
 
 // const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+app.use(cors({
+  origin:["http://localhost:5001", "https://jobsync.online"]
+}));
 
 // socket connection
 const io = new Server(server, {

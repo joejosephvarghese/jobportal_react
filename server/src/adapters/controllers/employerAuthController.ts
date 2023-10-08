@@ -66,6 +66,7 @@ const employerAuthController = (
   const emailVerification = expressAsyncHandler(
     async (req: Request, res: Response) => {
       const email = req.params.emailId;
+      console.log(req.params);
       await employerEmailVerification(
         email,
         dbRepositoryEmployer,
@@ -77,6 +78,9 @@ const employerAuthController = (
   const OTPVerification = expressAsyncHandler(
     async (req: Request, res: Response) => {
       const OTP = req.params.OTP;
+      console.log('====================================');
+      console.log(OTP);
+      console.log('====================================');
       const response = await verifyEmailOTP(OTP, sendEmailService);
       if (response) {
         res.json({status: 'success', message: 'email verified'});

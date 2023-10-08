@@ -23,6 +23,5 @@ const routes = (app) => {
     app.use('/api/job-application', authenticationMiddleware_1.default, (0, jobApplication_1.default)());
     app.use('/api/messenger-conversation', (0, conversation_1.default)());
     app.use('/api/messenger-message', authenticationMiddleware_1.default, (0, message_1.default)());
-    console.log(routes, "got routes");
 };
 exports.default = routes;

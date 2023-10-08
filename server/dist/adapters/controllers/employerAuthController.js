@@ -43,11 +43,15 @@ const employerAuthController = (authServiceInterface, authServiceImpl, employerD
     }));
     const emailVerification = (0, express_async_handler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const email = req.params.emailId;
+        console.log(req.params);
         yield (0, employerAuth_2.employerEmailVerification)(email, dbRepositoryEmployer, sendEmailService);
         res.json({ status: "success" });
     }));
     const OTPVerification = (0, express_async_handler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const OTP = req.params.OTP;
+        console.log('====================================');
+        console.log(OTP);
+        console.log('====================================');
         const response = yield (0, employerAuth_2.verifyEmailOTP)(OTP, sendEmailService);
         if (response) {
             res.json({ status: 'success', message: 'email verified' });

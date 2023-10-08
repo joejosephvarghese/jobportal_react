@@ -21,7 +21,6 @@ const routes = (app: Application) => {
     app.use('/api/job-application',authenticationMiddleware, jobApplicationRouter());
     app.use('/api/messenger-conversation', conversationRouter());
     app.use('/api/messenger-message', authenticationMiddleware, messageRouter());
-              console.log(routes,"got routes");
 }
 
 export default routes;
