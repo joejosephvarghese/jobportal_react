@@ -47,6 +47,8 @@ export const employerLogin = async (payload: LoginPayload): Promise<any> => {
         method: "get",
       };
       const response = await axios(config);
+      console.log(response.data,"lll");
+      
       return response.data;
     } catch (error: any) {
       if (error.message === "Request failed with status code 409") {
@@ -66,7 +68,7 @@ export const employerLogin = async (payload: LoginPayload): Promise<any> => {
       const response = await axios(config);
      console.log(response,"otp");
      
-      return response.data;
+      return response?.data;
     } catch (error: any) {
       if (error.message === "Request failed with status code 400") {
         throw new Error("Invalid OTP !!!");

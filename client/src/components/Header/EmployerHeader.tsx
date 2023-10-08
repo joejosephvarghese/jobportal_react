@@ -115,7 +115,7 @@ function EmployerHeader() {
         <nav className="flex items-center justify-between bg-foundItBg text-black p-4">
           <div className="flex items-center">
             <img
-              src=""
+              src="https://res.cloudinary.com/dgjwhf8i3/image/upload/v1685793152/Screenshot_2023-06-03_172145_pfhklc.jpg"
               alt="Logo"
               className="w-auto h-6 mr-2"
             />
