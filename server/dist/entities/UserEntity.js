@@ -37,8 +37,13 @@ class UserEntity {
             const currentDetails = yield this.model.findById(id);
             if (currentDetails) {
                 if (updates.skills) {
-                    currentDetails.skills = updates.skills;
+                    // Ensure uniqueness of skills
+                    const uniqueSkills = Array.from(new Set([...currentDetails.skills, ...updates.skills]));
+                    currentDetails.skills = uniqueSkills;
+                    console.log(currentDetails.skills);
+                    delete updates.skills; // Remove skills from updates to avoid overriding
                 }
+                // Update other fields using Object.assign
                 Object.assign(currentDetails, updates);
                 const updatedUser = yield currentDetails.save();
                 return updatedUser;

@@ -24,7 +24,7 @@ const server = http_1.default.createServer(app);
 (0, express_2.default)(app);
 // const PORT = process.env.PORT || 5000;
 app.use((0, cors_1.default)({
-    origin: ["http://localhost:5001", "https://jobsync.online"]
+    origin: ["http://localhost:3000", "https://jobsync.online"]
 }));
 // socket connection
 const io = new socket_io_1.Server(server, {
